@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+    eureka:
+        image: steeltoeoss/eurekaserver
+        ports:
+            - "8761:8761"
+        networks:
+            - local_network
+        container_name: eureka
+  
+    apigateway:
+        image: ${DOCKER_REGISTRY-}apigateway
+        build:
+            context: .
+            dockerfile: APIGateway/Dockerfile
+        depends_on:
+            - "eureka"
+        ports:
+            - "49905:80"
+        networks:
+            - "local_network"
+        container_name: apigateway
+
+    productservice:
+        image: service/productservice
+        build:
+            context: .
+            dockerfile: ../ProductService/ProductService/Dockerfile
+        depends_on:
+            - "eureka"
+        #ports:
+        #    - "49905:80"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        networks:
+            - "local_network"
+        container_name: productservice
+
+networks:
+    local_network:
+        driver: bridge

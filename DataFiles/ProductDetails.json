@@ -1,0 +1,15 @@
+[
+  
+  {
+    "ProductID": 6,
+    "ProductSize": 8.0,
+    "ProductPrice": 4500.0,
+    "ProductType": "Footware"
+  },
+  {
+    "ProductID": 7,
+    "ProductSize": 10.0,
+    "ProductPrice": 24000.0,
+    "ProductType": "mobile"
+  }
+]

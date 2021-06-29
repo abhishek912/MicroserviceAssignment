@@ -1,0 +1,158 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/Inventory/Add",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Inventory/Add",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "add_product",
+      "ServiceName": "PRODUCTSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "productapi" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/Inventory/Remove",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Inventory/Remove",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "remove_product",
+      "ServiceName": "PRODUCTSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "productapi" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/Inventory/List",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Inventory/List",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "list_product",
+      "ServiceName": "PRODUCTSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/Inventory/Details",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Inventory/Details",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "detail_product",
+      "ServiceName": "PRODUCTSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ProductDetails/Add",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/ProductDetails/Add",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "add_productdetails",
+      "ServiceName": "PRODUCTDETAILSSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "productdetailapi" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ProductDetails/Remove",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/ProductDetails/Remove",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "remove_productdetails",
+      "ServiceName": "PRODUCTDETAILSSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "productdetailapi" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/Product/AddToCart",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Product/AddToCart",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "add_cart",
+      "ServiceName": "ORDERSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "orderapi" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/Product/RemoveFromCart",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Product/RemoveFromCart",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "remove_cart",
+      "ServiceName": "ORDERSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "orderapi" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/Order/PlaceOrder",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Order/PlaceOrder",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "add_order",
+      "ServiceName": "ORDERSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "orderapi" ]
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/Order/CancelOrder",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Order/CancelOrder",
+      "UpstreamHttpMethod": [ "Post" ],
+      "Key": "cancel_order",
+      "ServiceName": "ORDERSERVICE",
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "orderapi" ]
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration",
+    "UseServiceDiscovery": true,
+    "ServiceDiscoveryProvider": {
+      "Type": "Eureka",
+      //change --> "Host": "localhost",
+      "Host": "eureka",
+      "Port": "8761"
+    }//,
+    //"BaseUrl": "http://localhost:49905"
+  }
+}
